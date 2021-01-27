@@ -4,10 +4,18 @@
 <link rel="stylesheet" href="/css/login.css" />
 
 <div class="form-container">
-    <label>Username</label>
-    <input type="text" placeholder="username"/> <br />
-    <label>Password</label>
-    <input type="text" placeholder="password" />
+    <div id="login-container">
+        <div class="form-group">
+            <label for="email-input">Username</label>
+            <input id="email-input" type="text" class="form-control" placeholder="Email" /> <br />
+        </div>
+        <div class="form-group">
+            <label for="password-input">Password</label>
+            <input id="password-input" type="text" class="form-control" placeholder="Password" />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button> <br />
+        <a href="#">No account? Register now</a>
+    </div>
 </div>
 
 
