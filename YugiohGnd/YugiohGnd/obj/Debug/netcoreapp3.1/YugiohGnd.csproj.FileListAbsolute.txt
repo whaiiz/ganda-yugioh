@@ -198,3 +198,5 @@ C:\Users\jaime\source\repos\ganda-yugioh\YugiohGnd\YugiohGnd\obj\Debug\netcoreap
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGnd\YugiohGnd\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGnd\YugiohGnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGnd\YugiohGnd\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\LoginOld.cshtml.g.cs
+C:\Users\jaime\source\repos\ganda-yugioh\YugiohGnd\YugiohGnd\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_MasterLayout.cshtml.g.cs
+C:\Users\jaime\source\repos\ganda-yugioh\YugiohGnd\YugiohGnd\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\OldRegister.cshtml.g.cs
