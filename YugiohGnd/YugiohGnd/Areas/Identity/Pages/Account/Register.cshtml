@@ -1,5 +1,5 @@
 ﻿@page
-@model OldRegisterModel
+@model RegisterModel
 @{
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
     ViewData["Title"] = "Register";
@@ -10,21 +10,66 @@
 <div class="form-container">
     <div class="inputs-container">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4 id="form-title">Register</h4>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" placeholder="Email" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <h4 id="form-title" class="mb-3">Register</h4>
+            <div class="row">
+                <div class="form-group col-sm">
+                    <label asp-for="Input.FirstName"></label>
+                    <input asp-for="Input.FirstName" class="form-control" placeholder="First name" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm">
+                    <label asp-for="Input.LastName"></label>
+                    <input asp-for="Input.LastName" class="form-control" placeholder="Last name" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" placeholder="Password" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            <div class="row">
+                <div class="form-group col-sm">
+                    <label asp-for="Input.Username"></label>
+                    <input asp-for="Input.Username" class="form-control" placeholder="Username" />
+                    <span asp-validation-for="Input.Username" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            <div class="row">
+                <div class="form-group col-sm">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm">
+                    <label asp-for="Input.BirthDate"></label>
+                    <input type="date" asp-for="Input.BirthDate" class="form-control" placeholder="Birth date" />
+                    <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm">
+                    <label asp-for="Input.PhoneNumber"></label>
+                    <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Phone number" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group col-sm">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
             </div>
             <button id="submit-btn" type="submit" class="btn btn-primary mb-3 mt-3">Register</button>
             <a id="register-now" asp-area="Identity" asp-page="/Account/Login">Back to login</a>
