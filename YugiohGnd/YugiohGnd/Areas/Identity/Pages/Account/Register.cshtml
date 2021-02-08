@@ -37,14 +37,18 @@
             </div>
             <div class="row">
                 <div class="form-group col-sm">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <label asp-for="Input.CountryId">Country</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
                 </div>
                 <div class="form-group col-sm">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    @Html.LabelFor(m => m.Input.CountryId, "CountryId");
+                    @Html.DropDownListFor(x => x.Input.CountryId, new SelectList(Model.Countries), "Select one", new { @class = "dropdown" });
+                    @Html.ValidationMessageFor(model => Model.Input.CountryId)
                 </div>
             </div>
             <div class="row">

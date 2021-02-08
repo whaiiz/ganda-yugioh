@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using YugiohGnd.Models.Dtos;
 using YugiohGnd.Repositories.Sql;
 
 namespace YugiohGnd.Areas.Identity.Pages.Account
@@ -46,6 +47,8 @@ namespace YugiohGnd.Areas.Identity.Pages.Account
         public string ReturnUrl { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
+        
+        public IList<CountryDto> Countries { get; set; }
 
         public class InputModel
         {
@@ -73,6 +76,9 @@ namespace YugiohGnd.Areas.Identity.Pages.Account
             [Display(Name = "Phone number")]
             public int PhoneNumber { get; set; }
 
+            [Display(Name = "Country")]
+            public int CountryId { get; set; }
+
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
@@ -89,6 +95,7 @@ namespace YugiohGnd.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            Countries = _countryRepository.Get();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
