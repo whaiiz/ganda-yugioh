@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YugiohGanda", "YugiohGanda\YugiohGanda.csproj", "{BD9249FD-7BDF-48C8-9A65-0B8D580337B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YugiohGanda.DataAccess", "YugiohGanda.DataAccess\YugiohGanda.DataAccess.csproj", "{00B73888-9C2E-4283-A5B3-E9659D27CB47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD9249FD-7BDF-48C8-9A65-0B8D580337B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD9249FD-7BDF-48C8-9A65-0B8D580337B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD9249FD-7BDF-48C8-9A65-0B8D580337B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD9249FD-7BDF-48C8-9A65-0B8D580337B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00B73888-9C2E-4283-A5B3-E9659D27CB47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B73888-9C2E-4283-A5B3-E9659D27CB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B73888-9C2E-4283-A5B3-E9659D27CB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B73888-9C2E-4283-A5B3-E9659D27CB47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72AA8DA6-A4EF-4B44-95B8-FFAF0D2A2495}
+	EndGlobalSection
+EndGlobal
