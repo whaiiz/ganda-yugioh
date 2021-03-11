@@ -1,0 +1,63 @@
+﻿@layout SuperLayout
+@page "/"
+<link rel="stylesheet" href="/css/duel.css" />
+
+<div id="game">
+    <div id="my-info">
+        <div id="my-life-points-container">
+            <h5 id="my-life-points">8000</h5>
+        </div>
+        <div id="my-profile">
+            <img id="my-avatar" src="/img/avatar.jpg" />
+        </div>
+    </div>
+
+    <div id="time-to-play"></div>
+
+    <div id="opponent-info"></div>
+
+    <div id="battle-buttons"></div>
+
+    <div id="opponent-playzone" class="playzone">
+        <div id="opponent-magic-cards">
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+        </div>
+        <div id="opponent-monster-cards">
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+        </div>
+
+    </div>
+
+    <div id="my-playzone" class="playzone">
+        <div id="my-magic-cards">
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+        </div>
+        <div id="my-monster-cards">
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+            <div class="card-slot"></div>
+        </div>
+    </div>
+
+    <div id="my-cards"></div>
+</div>
+
+
+
+@code {
+
+}

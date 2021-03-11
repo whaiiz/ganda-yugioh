@@ -1,0 +1,60 @@
+﻿body {
+    background: #011A9E;
+}
+
+#game { 
+    margin-left: 30vh;
+    margin-top: 1vh;
+    margin-right: 30vh;
+}
+
+#my-info {
+    position: relative;
+    height: 15vh;
+    width: 22vw;
+    background-color: black;
+}
+
+#my-life-points-container {
+    position: relative;
+    background-color: blue;
+    margin-left: 4vh;
+    width: 13vw;
+    height: 3vh;
+    display: inline-block;
+}
+
+#my-life-points {
+    text-align: center;
+    color: white;
+    font-family: Impact;
+}
+
+#my-profile {
+    display: inline-block;
+    margin-top: 2vh;
+    margin-left: 2vh
+}
+
+#my-avatar {
+    width: 5vw;
+    height: 10vh;
+}
+
+.playzone {
+    background-color: black;
+    margin-top: 4vh;
+    width: 70vw;
+    height: 50vh;
+    border-radius: 20px;
+}
+
+.card-slot {
+    border: 2px solid blue;
+    width: 2.06cm;
+    height: 3.01cm;
+    display: inline-block;
+    margin-left: 4vw;
+    margin-bottom: 5vw;
+    margin-bottom: 3vw;
+}
