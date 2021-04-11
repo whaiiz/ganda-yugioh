@@ -1,6 +1,6 @@
 ﻿namespace YugiohGanda.Core.Models
 {
-    public class DeckCard : BaseEntity
+    public class DeckCard
     {
         public int Id { get; set; }
 

@@ -2,7 +2,7 @@
 
 namespace YugiohGanda.Core.Models 
 { 
-    public abstract class Card : BaseEntity
+    public abstract class Card
     {
         public int Id { get; set; }
 

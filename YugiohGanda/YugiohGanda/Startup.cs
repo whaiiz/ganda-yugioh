@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using YugiohGanda.Data;
-using YugiohGanda.DataAccess;
-using YugiohGanda.DataAccess.Data;
-using YugiohGanda.DataAccess.Models;
+using YugiohGanda.Core;
+using YugiohGanda.Core.Data;
+using YugiohGanda.Core.Models;
+using YugiohGanda.Core.Repositories;
+using YugiohGanda.Core.Services;
 
 namespace YugiohGanda
 {
@@ -31,13 +32,19 @@ namespace YugiohGanda
             services.AddDefaultIdentity<User>().AddEntityFrameworkStores<AppDbContext>();
 
             /* Auto mapper configuration */
-            var configuration = new MapperConfiguration(cfg => {
+            var configuration = new MapperConfiguration(cfg =>
+            {
                 cfg.AddProfile<AutoMapperProfile>();
             });
 
+            /* Dependency injection */
+            services.AddScoped<UserRepository, UserRepository>();
+            services.AddScoped<DeckRepository, DeckRepository>();
+            services.AddScoped<DeckService, DeckService>();
+
+            /* Page configuration */
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

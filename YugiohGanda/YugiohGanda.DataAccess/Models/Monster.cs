@@ -2,7 +2,7 @@
 
 namespace YugiohGanda.Core.Models
 {
-    public class Monster : Card
+    public class Monster
     {
         public int AttackPoints { get; set; }
 
