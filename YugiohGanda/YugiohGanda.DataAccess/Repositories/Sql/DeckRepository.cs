@@ -6,7 +6,7 @@ using YugiohGanda.Core.Data;
 using YugiohGanda.Core.Models;
 using YugiohGanda.Core.Repositories.Interfaces;
 
-namespace YugiohGanda.Core.Repositories
+namespace YugiohGanda.Core.Repositories.Sql
 {
     public class DeckRepository : IDeckRepository
     {
