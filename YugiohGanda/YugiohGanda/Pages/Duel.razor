@@ -3,13 +3,28 @@
 <link rel="stylesheet" href="/css/duel.css" />
 
 <div id="game">
-    <div id="my-info">
-        <div id="my-life-points-container">
-            <h5 id="my-life-points">8000</h5>
+    <div id="my-info" class="d-inline-block user-info">
+        <div id="my-life-points-container" class="life-points-container">
+            <h5 id="my-life-points" class="life-points">8000</h5>
         </div>
-        <div id="my-profile">
-            <img id="my-avatar" src="/img/avatar.jpg" />
+        <div id="my-profile" class="profile">
+            <img id="my-avatar" src="/img/avatar.jpg" class="avatar" />
         </div>
+    </div>
+
+    <div id="opponent-info" class="d-inline-block user-info float-right">
+        <div id="opponent-life-points-container" class="life-points-container">
+            <h5 id="opponent-life-points" class="life-points">8000</h5>
+        </div>
+        <div id="opponent-profile" class="profile">
+            <img id="opponent-avatar" src="/img/avatar.jpg" class="avatar" />
+        </div>
+    </div>
+    <div id="phase-buttons" class="mt-2">
+        <button type="button" class="btn btn-primary">PH1</button>
+        <button type="button" class="btn btn-danger">BT</button>
+        <button type="button" class="btn btn-primary">PH1</button>
+        <button type="button" class="btn btn-warning">END</button>
     </div>
 
     <div id="time-to-play"></div>
@@ -19,44 +34,57 @@
     <div id="battle-buttons"></div>
 
     <div id="opponent-playzone" class="playzone">
-        <div id="opponent-magic-cards">
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-        </div>
-        <div id="opponent-monster-cards">
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
+        <div class="slot-row">
+            <div id="opponent-deck" class="card-slot"></div>
+            <div id="opponent-magic-cards" class="d-inline-block mx-2">
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+            </div>
+            <div id="opponent-graveyard" class="card-slot"></div>
         </div>
 
+        <div class="slot-row">
+            <div id="opponent-monster-cards" class="d-inline-block mx-2">
+                <div class="blank-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+            </div>
+            <div id="opponent-special-monsters" class="card-slot"></div>
+        </div>
     </div>
 
     <div id="my-playzone" class="playzone">
-        <div id="my-magic-cards">
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
+        <div class="slot-row">
+            <div id="my-special-monsters" class="card-slot"></div>
+            <div id="my-monster-cards" class="d-inline-block mx-2">
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+            </div>
         </div>
-        <div id="my-monster-cards">
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
-            <div class="card-slot"></div>
+        <div class="slot-row">
+            <div id="my-graveyard" class="card-slot"></div>
+            <div id="my-magic-cards" class="d-inline-block mx-2">
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+                <div class="card-slot"></div>
+            </div>
+            <div id="my-deck" class="card-slot mr-3"></div>
         </div>
     </div>
 
     <div id="my-cards"></div>
 </div>
-
-
 
 @code {
 

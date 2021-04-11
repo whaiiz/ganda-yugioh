@@ -4,12 +4,12 @@
     "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda\\YugiohGanda.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.DataAccess.csproj": {
+    "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.DataAccess.csproj",
-        "projectName": "YugiohGanda.DataAccess",
-        "projectPath": "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.Core.csproj",
+        "projectName": "YugiohGanda.Core",
+        "projectPath": "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.Core.csproj",
         "packagesPath": "C:\\Users\\jaime\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.12, )"
@@ -105,8 +109,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.DataAccess.csproj"
+              "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.Core.csproj": {
+                "projectPath": "C:\\Users\\jaime\\source\\repos\\ganda-yugioh\\YugiohGanda\\YugiohGanda.DataAccess\\YugiohGanda.Core.csproj"
               }
             }
           }

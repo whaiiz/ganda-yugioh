@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using YugiohGanda.DataAccess;
+using YugiohGanda.Core.Data;
 
-namespace YugiohGanda.DataAccess.Migrations
+namespace YugiohGanda.Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -154,7 +154,143 @@ namespace YugiohGanda.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("YugiohGanda.DataAccess.Models.User", b =>
+            modelBuilder.Entity("YugiohGanda.Core.Models.Card", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageSmall")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Cards");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Card");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.Deck", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Decks");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.DeckCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeckId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CardId");
+
+                    b.HasIndex("DeckId");
+
+                    b.ToTable("DeckCards");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.Duel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DuelStatus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Player1Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Player1Life")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Player2Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Player2Life")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Player1Id");
+
+                    b.HasIndex("Player2Id");
+
+                    b.ToTable("Duels");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.DuelCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CardId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DuelCardStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DuelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CardId");
+
+                    b.HasIndex("DuelId");
+
+                    b.ToTable("DuelCards");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -168,6 +304,9 @@ namespace YugiohGanda.DataAccess.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CurrentDeckId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(256)")
@@ -219,6 +358,9 @@ namespace YugiohGanda.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CurrentDeckId")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
 
@@ -228,6 +370,177 @@ namespace YugiohGanda.DataAccess.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.Monster", b =>
+                {
+                    b.HasBaseType("YugiohGanda.Core.Models.Card");
+
+                    b.Property<int>("AttackPoints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DefensePoints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MonsterAttribute")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MonsterType")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("Monster");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "An elf who learned to wield a sword, he baffles enemies with lightning - swift attacks.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/91152256.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/91152256.jpg",
+                            Name = "Celtic Guardian",
+                            Price = 1000,
+                            AttackPoints = 1400,
+                            DefensePoints = 1200,
+                            Level = 4,
+                            MonsterAttribute = 2,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "With skin tinged a bluish-white, this strange creature is a fearsome sight to behold.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/21263083.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg",
+                            Name = "Pale Beast",
+                            Price = 1200,
+                            AttackPoints = 1500,
+                            DefensePoints = 1200,
+                            Level = 4,
+                            MonsterAttribute = 2,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Much more than just a child, this dragon is gifted with untapped power.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/88819587.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/88819587.jpg",
+                            Name = "Baby Dragon",
+                            Price = 900,
+                            AttackPoints = 1200,
+                            DefensePoints = 700,
+                            Level = 3,
+                            MonsterAttribute = 6,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "A monster with tremendous power, it destroys enemies with a swing of its axe.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/5053103.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/5053103.jpg",
+                            Name = "Battle Ox",
+                            Price = 1400,
+                            AttackPoints = 1700,
+                            DefensePoints = 1000,
+                            Level = 4,
+                            MonsterAttribute = 2,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Elf twins that alternate their attacks.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/69140098.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/69140098.jpg",
+                            Name = "Gemini Elf",
+                            Price = 1600,
+                            AttackPoints = 1900,
+                            DefensePoints = 900,
+                            Level = 4,
+                            MonsterAttribute = 2,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "This wicked Beast-Warrior does every horrid thing imaginable, and loves it! His axe bears the marks of his countless victims.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/14898066.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/14898066.jpg",
+                            Name = "Vorse Raider",
+                            Price = 1700,
+                            AttackPoints = 1900,
+                            DefensePoints = 1200,
+                            Level = 4,
+                            MonsterAttribute = 0,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "This dragon has taken down countless prey with its sharp fangs. It strikes very quickly, because if it does not strike first it is vulnerable to a counter-attack.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/96005454.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/96005454.jpg",
+                            Name = "Hunter Dragon",
+                            Price = 1500,
+                            AttackPoints = 1700,
+                            DefensePoints = 100,
+                            Level = 3,
+                            MonsterAttribute = 0,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "A gourmet food renowned by the Dark World upper crust. It has sensational flavor.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/97240270.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/97240270.jpg",
+                            Name = "Mad Lobster",
+                            Price = 1500,
+                            AttackPoints = 1700,
+                            DefensePoints = 1000,
+                            Level = 3,
+                            MonsterAttribute = 5,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Apparently totally unreliable, he wonders if he has incredible potential.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/60246171.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/60246171.jpg",
+                            Name = "Soitsu",
+                            Price = 200,
+                            AttackPoints = 0,
+                            DefensePoints = 0,
+                            Level = 3,
+                            MonsterAttribute = 6,
+                            MonsterType = 0
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Nothing can stop the mad attack of this powerful creature.",
+                            Image = "https://storage.googleapis.com/ygoprodeck.com/pics/47060154.jpg",
+                            ImageSmall = "https://storage.googleapis.com/ygoprodeck.com/pics_small/47060154.jpg",
+                            Name = "Mystic Clown",
+                            Price = 700,
+                            AttackPoints = 1500,
+                            DefensePoints = 1000,
+                            Level = 4,
+                            MonsterAttribute = 0,
+                            MonsterType = 0
+                        });
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.SpellTrap", b =>
+                {
+                    b.HasBaseType("YugiohGanda.Core.Models.Card");
+
+                    b.HasDiscriminator().HasValue("SpellTrap");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -241,7 +554,7 @@ namespace YugiohGanda.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("YugiohGanda.DataAccess.Models.User", null)
+                    b.HasOne("YugiohGanda.Core.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -250,7 +563,7 @@ namespace YugiohGanda.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("YugiohGanda.DataAccess.Models.User", null)
+                    b.HasOne("YugiohGanda.Core.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -265,7 +578,7 @@ namespace YugiohGanda.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("YugiohGanda.DataAccess.Models.User", null)
+                    b.HasOne("YugiohGanda.Core.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -274,9 +587,73 @@ namespace YugiohGanda.DataAccess.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("YugiohGanda.DataAccess.Models.User", null)
+                    b.HasOne("YugiohGanda.Core.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.Card", b =>
+                {
+                    b.HasOne("YugiohGanda.Core.Models.User", "User")
+                        .WithMany("Cards")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.Deck", b =>
+                {
+                    b.HasOne("YugiohGanda.Core.Models.User", "User")
+                        .WithMany("Decks")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.DeckCard", b =>
+                {
+                    b.HasOne("YugiohGanda.Core.Models.Card", "Card")
+                        .WithMany("DeckCards")
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YugiohGanda.Core.Models.Deck", "Deck")
+                        .WithMany("DeckCards")
+                        .HasForeignKey("DeckId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.Duel", b =>
+                {
+                    b.HasOne("YugiohGanda.Core.Models.User", "Player1")
+                        .WithMany()
+                        .HasForeignKey("Player1Id");
+
+                    b.HasOne("YugiohGanda.Core.Models.User", "Player2")
+                        .WithMany()
+                        .HasForeignKey("Player2Id");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.DuelCard", b =>
+                {
+                    b.HasOne("YugiohGanda.Core.Models.Card", "Card")
+                        .WithMany("DuelCards")
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YugiohGanda.Core.Models.Duel", "Duel")
+                        .WithMany("DuelCards")
+                        .HasForeignKey("DuelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.User", b =>
+                {
+                    b.HasOne("YugiohGanda.Core.Models.Deck", "CurrentDeck")
+                        .WithOne()
+                        .HasForeignKey("YugiohGanda.Core.Models.User", "CurrentDeckId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

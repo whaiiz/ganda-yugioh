@@ -401,3 +401,4 @@ C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netco
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\Razor\Pages\Duel.razor.g.cs
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SuperLayout.razor.g.cs
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\Razor\Shared\SuperLayout.razor.g.cs
+C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\AutoMapper.dll

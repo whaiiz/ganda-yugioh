@@ -1,12 +1,13 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using YugiohGanda.Data;
 using YugiohGanda.DataAccess;
+using YugiohGanda.DataAccess.Data;
 using YugiohGanda.DataAccess.Models;
 
 namespace YugiohGanda
@@ -24,9 +25,15 @@ namespace YugiohGanda
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            /* Database configuration */
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<User>().AddEntityFrameworkStores<AppDbContext>();
+
+            /* Auto mapper configuration */
+            var configuration = new MapperConfiguration(cfg => {
+                cfg.AddProfile<AutoMapperProfile>();
+            });
 
             services.AddRazorPages();
             services.AddServerSideBlazor();

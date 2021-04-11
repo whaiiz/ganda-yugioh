@@ -1,60 +1,77 @@
 ﻿body {
-    background: #011A9E;
-}
+  background: #011A9E; }
 
-#game { 
-    margin-left: 30vh;
-    margin-top: 1vh;
-    margin-right: 30vh;
-}
+#game {
+  position: absolute;
+  align-items: center;
+  margin-top: 1vh;
+  margin-left: 40vh;
+  margin-right: 40vh; }
 
-#my-info {
-    position: relative;
-    height: 15vh;
-    width: 22vw;
-    background-color: black;
-}
+.user-info {
+  position: relative;
+  height: 15vh;
+  width: 22vw;
+  background-color: black; }
 
-#my-life-points-container {
-    position: relative;
-    background-color: blue;
-    margin-left: 4vh;
-    width: 13vw;
-    height: 3vh;
-    display: inline-block;
-}
+.life-points-container {
+  position: relative;
+  background-color: blue;
+  margin-left: 4vh;
+  width: 13vw;
+  height: 3vh;
+  display: inline-block; }
 
-#my-life-points {
-    text-align: center;
-    color: white;
-    font-family: Impact;
-}
+.life-points {
+  text-align: center;
+  color: white;
+  font-family: Impact; }
 
-#my-profile {
-    display: inline-block;
-    margin-top: 2vh;
-    margin-left: 2vh
-}
+.profile {
+  display: inline-block;
+  margin-top: 2vh;
+  margin-left: 2vh; }
 
-#my-avatar {
-    width: 5vw;
-    height: 10vh;
-}
+.avatar {
+  width: 5vw;
+  height: 10vh; }
 
 .playzone {
-    background-color: black;
-    margin-top: 4vh;
-    width: 70vw;
-    height: 50vh;
-    border-radius: 20px;
-}
+  background-color: black;
+  margin-top: 4vh;
+  border-radius: 20px; }
 
 .card-slot {
-    border: 2px solid blue;
-    width: 2.06cm;
-    height: 3.01cm;
-    display: inline-block;
-    margin-left: 4vw;
-    margin-bottom: 5vw;
-    margin-bottom: 3vw;
-}
+  width: 52px;
+  height: 76px;
+  display: inline-block;
+  margin-left: 4vw;
+  margin-bottom: 3vh;
+  margin-top: 3vh;
+  background-color: #C4C4C4; }
+
+.blank-slot {
+  width: 52px;
+  height: 76px;
+  display: inline-block;
+  margin-left: 4vw;
+  margin-bottom: 3vh;
+  margin-top: 3vh; }
+
+#opponent-deck {
+  background: url(../img/card-upside-down-inverted.png) no-repeat;
+  background-size: contain; }
+
+#my-deck {
+  background: url(../img/card-upside-down.png) no-repeat;
+  background-size: contain; }
+
+#middle-profiles {
+  color: white;
+  font-family: Impact;
+  text-align: center;
+  align-items: center;
+  border: 4px dotted blue; }
+
+#phase-buttons {
+  align-items: center; }

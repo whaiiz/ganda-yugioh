@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace YugiohGanda.DataAccess.ValidationAttributes
+namespace YugiohGanda.Core.ValidationAttributes
 {
     public class DateOfBirthAttribute : ValidationAttribute
     {
