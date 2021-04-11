@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using YugiohGanda.Core.Data;
 using YugiohGanda.Core.Models;
-using YugiohGanda.Core.Repositories.Interfaces;
 
 namespace YugiohGanda.Core.Repositories
 {
-    public class DeckRepository : IDeckRepository
+    public class DeckRepository
     {
         private readonly AppDbContext _context;
 
@@ -53,6 +52,12 @@ namespace YugiohGanda.Core.Repositories
         public async Task<bool> Delete(int id)
         {
             var deck = await _context.Decks.FirstOrDefaultAsync(d => d.Id == id);
+
+            if(deck == null)
+            {
+                throw new NotFoundException("Deck not found");
+            }
+
             _context.Decks.Remove(deck);
             return await _context.SaveChangesAsync() > 0;
         }

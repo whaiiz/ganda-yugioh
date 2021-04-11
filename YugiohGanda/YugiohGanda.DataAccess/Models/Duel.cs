@@ -3,7 +3,7 @@ using YugiohGanda.Core.Common;
 
 namespace YugiohGanda.Core.Models
 {
-    public class Duel : BaseEntity
+    public class Duel
     {
         public int Id { get; set; }
 

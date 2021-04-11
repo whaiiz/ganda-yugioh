@@ -2,7 +2,7 @@
 
 namespace YugiohGanda.Core.Models
 {
-    public class DuelCard : BaseEntity
+    public class DuelCard
     {
         public int Id { get; set; }
 

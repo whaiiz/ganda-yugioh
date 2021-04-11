@@ -2,7 +2,7 @@
 
 namespace YugiohGanda.Core.Models
 {
-    public class SpellTrap: Card
+    public class SpellTrap
     {
         public SpellTrapType SpellTrapType;
     }
