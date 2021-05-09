@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using YugiohGanda.DataAccess.Models;
+using YugiohGanda.Core.Models;
 
 namespace YugiohGanda.Areas.Identity.Pages.Account
 {

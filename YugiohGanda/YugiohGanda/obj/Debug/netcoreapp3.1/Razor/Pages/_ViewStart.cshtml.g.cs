@@ -28,13 +28,13 @@ using YugiohGanda.Areas.Identity;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\Pages\_ViewImports.cshtml"
-using YugiohGanda.DataAccess.Models;
+using YugiohGanda.Core.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Pages/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c74a514e4dcc96852d3d2c995c2027a535d46646", @"/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"20ae3391f635ffacec07272b219a087ae67258a0", @"/Pages/_ViewImports.cshtml")]
     public class Pages__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

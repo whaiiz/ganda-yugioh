@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using YugiohGanda.DataAccess.Models;
+using YugiohGanda.Core.Models;
 
 namespace YugiohGanda.Areas.Identity.Pages.Account
 {

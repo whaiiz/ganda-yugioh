@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using YugiohGanda.DataAccess.Models;
+using YugiohGanda.Core.Models;
 
 namespace YugiohGanda.Areas.Identity.Pages.Account
 {
