@@ -30,12 +30,14 @@ namespace YugiohGanda
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<User>().AddEntityFrameworkStores<AppDbContext>();
-
+            
             /* Auto mapper configuration */
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<AutoMapperProfile>();
             });
+            var mapper = configuration.CreateMapper();
+            services.AddSingleton(mapper);
 
             /* Dependency injection */
             services.AddScoped<UserRepository, UserRepository>();

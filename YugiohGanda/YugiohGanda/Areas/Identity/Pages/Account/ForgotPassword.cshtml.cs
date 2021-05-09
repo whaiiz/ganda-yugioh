@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using YugiohGanda.DataAccess.Models;
+using YugiohGanda.Core.Models;
 
 namespace YugiohGanda.Areas.Identity.Pages.Account
 {

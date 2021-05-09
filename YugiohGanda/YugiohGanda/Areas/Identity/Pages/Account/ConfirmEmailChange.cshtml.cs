@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 using System.Threading.Tasks;
-using YugiohGanda.DataAccess.Models;
+using YugiohGanda.Core.Models;
 
 namespace YugiohGanda.Areas.Identity.Pages.Account
 {

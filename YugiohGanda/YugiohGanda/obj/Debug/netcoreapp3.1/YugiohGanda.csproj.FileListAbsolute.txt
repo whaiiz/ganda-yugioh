@@ -308,8 +308,6 @@ C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netco
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\YugiohGanda.DataAccess.dll
-C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\YugiohGanda.DataAccess.pdb
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\YugiohGanda.csprojAssemblyReference.cache
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\YugiohGanda.AssemblyInfoInputs.cache
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\YugiohGanda.AssemblyInfo.cs
@@ -402,3 +400,5 @@ C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netco
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SuperLayout.razor.g.cs
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\obj\Debug\netcoreapp3.1\Razor\Shared\SuperLayout.razor.g.cs
 C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\YugiohGanda.Core.dll
+C:\Users\jaime\source\repos\ganda-yugioh\YugiohGanda\YugiohGanda\bin\Debug\netcoreapp3.1\YugiohGanda.Core.pdb
