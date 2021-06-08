@@ -9,16 +9,22 @@
 <div class="form-container">
     <div class="inputs-container">
         <form id="account" method="post">
-            <h4 id="form-title" class="mb-3">Login</h4>
             <div class="form-group">
+                <div class="validation-messages" asp-validation-summary="All"></div>
                 <label asp-for="Input.Email">Email</label>
                 <input asp-for="Input.Email" id="email-input" type="text" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Input.Password">Password</label>
                 <input asp-for="Input.Password" id="password-input" type="password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
-            <button id="submit-btn" type="submit" class="btn btn-primary mb-3 mt-3">Login</button>
+            <div class="form-group">
+                <input asp-for="Input.RememberMe" type="checkbox" />
+                <label asp-for="Input.RememberMe">Remember me</label>
+            </div>
+            <button id="submit-btn" type="submit" class="btn btn-primary mb-3">Login</button>
             <a id="register-now" asp-area="Identity" asp-page="/Account/Register">No account? Register now</a>
         </form>
     </div>

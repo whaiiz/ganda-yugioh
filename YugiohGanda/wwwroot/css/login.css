@@ -17,20 +17,18 @@
 
 .form-container {
     margin: auto;
+    display: flex;
     width: 70%;
-    height: 100%;
     background: black;
+    height: 100vh;
 }
 
-.form-container label {
-    color: white;
-}
-
-#form-title {
+.form-container label, #form-title {
     color: white;
 }
 
 .inputs-container {
+    flex: 1;
     padding: 15%;
 }
 
@@ -43,4 +41,10 @@ input, select {
 #submit-btn {
     width: 100%;
     border-radius: 30px;
+}
+
+.validation-messages ul {
+    padding: 0;
+    color: red;
+    list-style: none;
 }
