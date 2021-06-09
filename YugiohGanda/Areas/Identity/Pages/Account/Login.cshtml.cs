@@ -27,8 +27,7 @@ namespace YugiohGanda.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            public string Username { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -38,26 +37,25 @@ namespace YugiohGanda.Areas.Identity.Pages.Account
             public bool RememberMe { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
-        {
-            returnUrl = returnUrl ?? Url.Content("~/");
-
+        public async Task OnGetAsync()
+        {           
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
-
-            ReturnUrl = returnUrl;
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            returnUrl ??= Url.Content("~/");
+
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Password, 
+                    Input.RememberMe, lockoutOnFailure: false);
                 
                 if (result.Succeeded) return LocalRedirect(returnUrl);
-                if (result.IsLockedOut) return RedirectToPage("./Lockout");
                 else ModelState.AddModelError(Input.Password, "Wrong email or password");
             }
+
             return Page();
         }
     }
