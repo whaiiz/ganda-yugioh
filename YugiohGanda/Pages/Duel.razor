@@ -5,88 +5,144 @@
 
 <link rel="stylesheet" href="/css/duel.css" />
 
-<div id="game">
-    <div id="my-info" class="d-inline-block user-info">
-        <div id="my-life-points-container" class="life-points-container">
-            <h5 id="my-life-points" class="life-points">8000</h5>
-        </div>
-        <div id="my-profile" class="profile">
-            <img id="my-avatar" src="/img/avatar.jpg" class="avatar" />
-        </div>
-    </div>
-
-    <div id="opponent-info" class="d-inline-block user-info float-right">
-        <div id="opponent-life-points-container" class="life-points-container">
-            <h5 id="opponent-life-points" class="life-points">8000</h5>
-        </div>
-        <div id="opponent-profile" class="profile">
-            <img id="opponent-avatar" src="/img/avatar.jpg" class="avatar" />
+<div id="game" class="mt-4">
+    <div id="card-info">
+        <img id="card-image" src="/img/celtic.jpg" />
+        <div id="card-description" class="mt-2">
+            <label class="m-2 d-block">An elf who learned to wield a sword, he baffles enemies with lightning - swift attacks.</label>
+            <label class="m-2">Attack: 1400</label>
+            <label class="m-2">Defense: 1200</label>
         </div>
     </div>
-    <div id="phase-buttons" class="mt-2">
+    <div id="my-info" class="user-info">
+        <img src="/img/avatar.jpg" class="avatar" />
+        <div class="life-points">Name</div>
+        <div class="life-points">8000</div>
+        <div class="life-points">Cards</div>
+    </div>
+    <div id="phase-buttons">
         <button type="button" class="btn btn-primary">PH1</button>
         <button type="button" class="btn btn-danger">BT</button>
-        <button type="button" class="btn btn-primary">PH1</button>
+        <button type="button" class="btn btn-primary">PH2</button>
         <button type="button" class="btn btn-warning">END</button>
     </div>
-
-    <div id="time-to-play"></div>
-
-    <div id="opponent-info"></div>
-
-    <div id="battle-buttons"></div>
-
-    <div id="opponent-playzone" class="playzone">
-        <div class="slot-row">
-            <div id="opponent-deck" class="card-slot"></div>
-            <div id="opponent-magic-cards" class="d-inline-block mx-2">
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
+    <div id="opponent-info" class="user-info">
+        <img src="/img/avatar.jpg" class="avatar" />
+        <div class="life-points">Name</div>
+        <div class="life-points">8000</div>
+        <div class="life-points">Cards</div>
+    </div>
+    <div class="playzone-container">
+        <div id="playzone">
+            <div id="opponent-playzone">
+                <div id="opponent-deck" class="playzone-card-container">
+                    <div class="card"></div>
+                </div>
+                <div id="opponent-spelltrap1-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card opponent-card" />
+                </div>
+                <div id="opponent-spelltrap2-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card opponent-card" />
+                </div>
+                <div id="opponent-spelltrap3-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card opponent-card" />
+                </div>
+                <div id="opponent-spelltrap4-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card opponent-card" />
+                </div>
+                <div id="opponent-spelltrap5-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card opponent-card" />
+                </div>
+                <div id="opponent-special-cards" class="playzone-card-container">
+                    <div class="card opponent-card"></div>
+                </div>
+                <div id="opponent-graveyard" class="playzone-card-container">
+                    <div class="card opponent-card"></div>
+                </div>
+                <div id="opponent-monster1-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card opponent-card" />
+                </div>
+                <div id="opponent-monster2-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card opponent-card" />
+                </div>
+                <div id="opponent-monster3-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card opponent-card" />
+                </div>
+                <div id="opponent-monster4-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card opponent-card" />
+                </div>
+                <div id="opponent-monster5-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card opponent-card" />
+                </div>
+                <div id="opponent-fusion-cards" class="playzone-card-container">
+                </div>
             </div>
-            <div id="opponent-graveyard" class="card-slot"></div>
-        </div>
-
-        <div class="slot-row">
-            <div id="opponent-monster-cards" class="d-inline-block mx-2">
-                <div class="blank-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
+            <div id="my-playzone">
+                <div id="my-fusion-cards" class="playzone-card-container">
+                    <div class="card"></div>
+                </div>
+                <div id="my-monster1-container" class="playzone-card-container">
+                    <img class="card" />
+                </div>
+                <div id="my-monster2-container" class="playzone-card-container">
+                    <img class="card" />
+                </div>
+                <div id="my-monster3-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card" />
+                </div>
+                <div id="my-monster4-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card" />
+                </div>
+                <div id="my-monster5-container" class="playzone-card-container">
+                    <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" class="card" />
+                </div>
+                <div id="my-graveyard" class="playzone-card-container">
+                    <div class="card"></div>
+                </div>
+                <div id="my-special-cards" class="playzone-card-container">
+                    <div class="card"></div>
+                </div>
+                <div id="my-spelltrap1-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card" />
+                </div>
+                <div id="my-spelltrap2-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card" />
+                </div>
+                <div id="my-spelltrap3-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card" />
+                </div>
+                <div id="my-spelltrap4-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card" />
+                </div>
+                <div id="my-spelltrap5-container" class="playzone-card-container">
+                    <img src="/img/card-upside-down.png" class="card" />
+                </div>
+                <div id="my-deck" class="playzone-card-container">
+                    <div class="card"></div>
+                </div>
             </div>
-            <div id="opponent-special-monsters" class="card-slot"></div>
         </div>
     </div>
-
-    <div id="my-playzone" class="playzone">
-        <div class="slot-row">
-            <div id="my-special-monsters" class="card-slot"></div>
-            <div id="my-monster-cards" class="d-inline-block mx-2">
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-            </div>
+    <div id="my-hand" class="mt-5">
+        <div class="my-hand-card">
+            <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" />
         </div>
-        <div class="slot-row">
-            <div id="my-graveyard" class="card-slot"></div>
-            <div id="my-magic-cards" class="d-inline-block mx-2">
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-                <div class="card-slot"></div>
-            </div>
-            <div id="my-deck" class="card-slot mr-3"></div>
+        <div class="my-hand-card">
+            <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" />
+        </div>
+        <div class="my-hand-card">
+            <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" />
+        </div>
+        <div class="my-hand-card">
+            <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" />
+        </div>
+        <div class="my-hand-card">
+            <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" />
+        </div>
+        <div class="my-hand-card">
+            <img src="https://storage.googleapis.com/ygoprodeck.com/pics_small/21263083.jpg" />
         </div>
     </div>
-
-    <div id="my-cards"></div>
 </div>
 
 @code {
