@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using YugiohGanda.Core.Common;
+﻿using YugiohGanda.Core.Common;
 
 namespace YugiohGanda.Core.Models
 {
@@ -7,20 +6,14 @@ namespace YugiohGanda.Core.Models
     {
         public int Id { get; set; }
 
-        public int Player1Life { get; set; }
+        public int? DuelUser1Id { get; set; }
 
-        public int Player2Life { get; set; }
+        public int? DuelUser2Id { get; set; }
 
-        public string Player1Id { get; set; }
+        public DuelUser DuelUser1 { get; set; }
 
-        public string Player2Id { get; set; }
-
-        public User Player1 { get; set; }
-
-        public User Player2 { get; set; }
+        public DuelUser DuelUser2 { get; set; }
 
         public DuelStatus DuelStatus { get; set; } 
-
-        public ICollection<DuelCard> DuelCards { get; set; }
     }
 }

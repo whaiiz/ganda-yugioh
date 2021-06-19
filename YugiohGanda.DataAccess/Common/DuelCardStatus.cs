@@ -5,5 +5,7 @@
         Graveyard,
         Played,
         Hand,
+        Fusion,
+        Special
     }
 }

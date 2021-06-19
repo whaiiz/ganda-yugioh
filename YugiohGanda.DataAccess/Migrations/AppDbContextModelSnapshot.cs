@@ -187,7 +187,7 @@ namespace YugiohGanda.Core.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Cards");
+                    b.ToTable("Card");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Card");
                 });
@@ -244,23 +244,17 @@ namespace YugiohGanda.Core.Migrations
                     b.Property<int>("DuelStatus")
                         .HasColumnType("int");
 
-                    b.Property<string>("Player1Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Player1Life")
+                    b.Property<int?>("DuelUser1Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("Player2Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Player2Life")
+                    b.Property<int?>("DuelUser2Id")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Player1Id");
+                    b.HasIndex("DuelUser1Id");
 
-                    b.HasIndex("Player2Id");
+                    b.HasIndex("DuelUser2Id");
 
                     b.ToTable("Duels");
                 });
@@ -281,13 +275,43 @@ namespace YugiohGanda.Core.Migrations
                     b.Property<int>("DuelId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DuelUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CardId");
 
                     b.HasIndex("DuelId");
 
+                    b.HasIndex("DuelUserId");
+
                     b.ToTable("DuelCards");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.DuelUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DuelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Lifepoints")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DuelId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DuelUsers");
                 });
 
             modelBuilder.Entity("YugiohGanda.Core.Models.User", b =>
@@ -626,13 +650,15 @@ namespace YugiohGanda.Core.Migrations
 
             modelBuilder.Entity("YugiohGanda.Core.Models.Duel", b =>
                 {
-                    b.HasOne("YugiohGanda.Core.Models.User", "Player1")
+                    b.HasOne("YugiohGanda.Core.Models.DuelUser", "DuelUser1")
                         .WithMany()
-                        .HasForeignKey("Player1Id");
+                        .HasForeignKey("DuelUser1Id")
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("YugiohGanda.Core.Models.User", "Player2")
+                    b.HasOne("YugiohGanda.Core.Models.DuelUser", "DuelUser2")
                         .WithMany()
-                        .HasForeignKey("Player2Id");
+                        .HasForeignKey("DuelUser2Id")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("YugiohGanda.Core.Models.DuelCard", b =>
@@ -644,10 +670,27 @@ namespace YugiohGanda.Core.Migrations
                         .IsRequired();
 
                     b.HasOne("YugiohGanda.Core.Models.Duel", "Duel")
-                        .WithMany("DuelCards")
+                        .WithMany()
                         .HasForeignKey("DuelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("YugiohGanda.Core.Models.DuelUser", null)
+                        .WithMany("DuelCards")
+                        .HasForeignKey("DuelUserId");
+                });
+
+            modelBuilder.Entity("YugiohGanda.Core.Models.DuelUser", b =>
+                {
+                    b.HasOne("YugiohGanda.Core.Models.Duel", "Duel")
+                        .WithMany()
+                        .HasForeignKey("DuelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("YugiohGanda.Core.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("YugiohGanda.Core.Models.User", b =>

@@ -11,6 +11,7 @@ namespace YugiohGanda.Core.Data
         public DbSet<Monster> Monsters { get; set; }
         public DbSet<SpellTrap> SpellTraps { get; set; }
         public DbSet<Duel> Duels { get; set; }
+        public DbSet<DuelUser> DuelUsers { get; set; }
         public DbSet<DuelCard> DuelCards { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -22,8 +23,9 @@ namespace YugiohGanda.Core.Data
             modelBuilder.ApplyConfiguration(new MonsterConfiguration());
             modelBuilder.ApplyConfiguration(new DeckConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new DuelConfiguration());
 
-            modelBuilder.Entity<Card>().ToTable("Cards");
+
             base.OnModelCreating(modelBuilder);
         }
 

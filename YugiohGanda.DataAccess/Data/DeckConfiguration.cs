@@ -13,7 +13,6 @@ namespace YugiohGanda.Core.Data
             builder.HasOne(d => d.User)
              .WithMany(u => u.Decks)
              .HasForeignKey(d => d.UserId);   
-           
         }
     }
 }
