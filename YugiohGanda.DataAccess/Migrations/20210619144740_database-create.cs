@@ -104,7 +104,7 @@ namespace YugiohGanda.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cards",
+                name: "Card",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -124,7 +124,7 @@ namespace YugiohGanda.Core.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cards", x => x.Id);
+                    table.PrimaryKey("PK_Card", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,7 +163,7 @@ namespace YugiohGanda.Core.Migrations
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
-                    CurrentDeckId = table.Column<int>(nullable: false)
+                    CurrentDeckId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -173,7 +173,7 @@ namespace YugiohGanda.Core.Migrations
                         column: x => x.CurrentDeckId,
                         principalTable: "Decks",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -189,9 +189,9 @@ namespace YugiohGanda.Core.Migrations
                 {
                     table.PrimaryKey("PK_DeckCards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DeckCards_Cards_CardId",
+                        name: "FK_DeckCards_Card_CardId",
                         column: x => x.CardId,
-                        principalTable: "Cards",
+                        principalTable: "Card",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -203,30 +203,49 @@ namespace YugiohGanda.Core.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DuelUsers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Lifepoints = table.Column<int>(nullable: false),
+                    DuelId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DuelUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DuelUsers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Duels",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Player1Life = table.Column<int>(nullable: false),
-                    Player2Life = table.Column<int>(nullable: false),
-                    Player1Id = table.Column<string>(nullable: true),
-                    Player2Id = table.Column<string>(nullable: true),
+                    DuelUser1Id = table.Column<int>(nullable: true),
+                    DuelUser2Id = table.Column<int>(nullable: true),
                     DuelStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Duels", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Duels_AspNetUsers_Player1Id",
-                        column: x => x.Player1Id,
-                        principalTable: "AspNetUsers",
+                        name: "FK_Duels_DuelUsers_DuelUser1Id",
+                        column: x => x.DuelUser1Id,
+                        principalTable: "DuelUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Duels_AspNetUsers_Player2Id",
-                        column: x => x.Player2Id,
-                        principalTable: "AspNetUsers",
+                        name: "FK_Duels_DuelUsers_DuelUser2Id",
+                        column: x => x.DuelUser2Id,
+                        principalTable: "DuelUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -239,15 +258,16 @@ namespace YugiohGanda.Core.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DuelId = table.Column<int>(nullable: false),
                     CardId = table.Column<int>(nullable: false),
-                    DuelCardStatus = table.Column<int>(nullable: false)
+                    DuelCardStatus = table.Column<int>(nullable: false),
+                    DuelUserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DuelCards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DuelCards_Cards_CardId",
+                        name: "FK_DuelCards_Card_CardId",
                         column: x => x.CardId,
-                        principalTable: "Cards",
+                        principalTable: "Card",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -256,10 +276,16 @@ namespace YugiohGanda.Core.Migrations
                         principalTable: "Duels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DuelCards_DuelUsers_DuelUserId",
+                        column: x => x.DuelUserId,
+                        principalTable: "DuelUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
-                table: "Cards",
+                table: "Card",
                 columns: new[] { "Id", "Description", "Discriminator", "Image", "ImageSmall", "Name", "Price", "UserId", "AttackPoints", "DefensePoints", "Level", "MonsterAttribute", "MonsterType" },
                 values: new object[,]
                 {
@@ -306,7 +332,8 @@ namespace YugiohGanda.Core.Migrations
                 name: "IX_AspNetUsers_CurrentDeckId",
                 table: "AspNetUsers",
                 column: "CurrentDeckId",
-                unique: true);
+                unique: true,
+                filter: "[CurrentDeckId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
@@ -321,8 +348,8 @@ namespace YugiohGanda.Core.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cards_UserId",
-                table: "Cards",
+                name: "IX_Card_UserId",
+                table: "Card",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -351,14 +378,29 @@ namespace YugiohGanda.Core.Migrations
                 column: "DuelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Duels_Player1Id",
-                table: "Duels",
-                column: "Player1Id");
+                name: "IX_DuelCards_DuelUserId",
+                table: "DuelCards",
+                column: "DuelUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Duels_Player2Id",
+                name: "IX_Duels_DuelUser1Id",
                 table: "Duels",
-                column: "Player2Id");
+                column: "DuelUser1Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Duels_DuelUser2Id",
+                table: "Duels",
+                column: "DuelUser2Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DuelUsers_DuelId",
+                table: "DuelUsers",
+                column: "DuelId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DuelUsers_UserId",
+                table: "DuelUsers",
+                column: "UserId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_AspNetUserRoles_AspNetUsers_UserId",
@@ -393,8 +435,8 @@ namespace YugiohGanda.Core.Migrations
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Cards_AspNetUsers_UserId",
-                table: "Cards",
+                name: "FK_Card_AspNetUsers_UserId",
+                table: "Card",
                 column: "UserId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
@@ -407,6 +449,14 @@ namespace YugiohGanda.Core.Migrations
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_DuelUsers_Duels_DuelId",
+                table: "DuelUsers",
+                column: "DuelId",
+                principalTable: "Duels",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -414,6 +464,14 @@ namespace YugiohGanda.Core.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Decks_AspNetUsers_UserId",
                 table: "Decks");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_DuelUsers_AspNetUsers_UserId",
+                table: "DuelUsers");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_DuelUsers_Duels_DuelId",
+                table: "DuelUsers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -440,16 +498,19 @@ namespace YugiohGanda.Core.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Cards");
-
-            migrationBuilder.DropTable(
-                name: "Duels");
+                name: "Card");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Decks");
+
+            migrationBuilder.DropTable(
+                name: "Duels");
+
+            migrationBuilder.DropTable(
+                name: "DuelUsers");
         }
     }
 }
